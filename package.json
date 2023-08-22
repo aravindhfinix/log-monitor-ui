@@ -23,7 +23,10 @@
     "authenticate",
     "ui",
     "log ui",
-    "log"
+    "log",
+    "log-monitor-ui",
+    "logs moniter",
+    "log monitor"
   ],
   "author": "aravindh",
   "license": "ISC",
