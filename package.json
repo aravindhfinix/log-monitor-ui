@@ -1,0 +1,34 @@
+{
+  "name": "log-monitor-ui",
+  "version": "1.0.0",
+  "description": "npm package to monitor your server logs on local",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aravindhfinix/log-monitor-ui.git"
+  },
+  "keywords": [
+    "pm2",
+    "moniter",
+    "logs",
+    "node"
+  ],
+  "author": "aravindh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aravindhfinix/log-monitor-ui/issues"
+  },
+  "homepage": "https://github.com/aravindhfinix/log-monitor-ui#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1",
+    "http": "^0.0.1-security",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}

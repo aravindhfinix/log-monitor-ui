@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PM2 Log Viewer</title>
+    <style>
+   body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(119, 112, 112);
+        color: white;
+        font-family: "Courier New", monospace;
+      }
+      .log-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      .log-box {
+        flex: 1;
+        border: 1px solid white;
+        padding: 10px;
+        background-color: #050505;
+        overflow: auto;
+        max-height: 70vh;
+      }
+      .error-box {
+        color: red;
+      }
+      .success-box {
+        color: greenyellow;
+      }
+      h1 {
+        text-align: center;
+      }    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const port = window.location.port;
+
+        const socket = io(`http://localhost:${port}`);
+
+        socket.on("connect", () => {
+          console.log("Connected to server");
+        });
+
+        socket.on("logFileChange", (logData) => {
+          updateLog("success-logs", logData);
+        });
+
+        socket.on("errorLogFileChange", (logData) => {
+          updateLog("error-logs", logData);
+        });
+
+        socket.on("disconnect", () => {
+          console.log("Disconnected from server");
+        });
+
+        function updateLog(logType, logData) {
+          const logContainer = document.getElementById(logType);
+          logContainer.innerHTML = ""; // Clear existing content
+
+          const logElement = document.createElement("pre");
+          logElement.textContent = logData;
+          logContainer.appendChild(logElement);
+
+          // Automatically scroll to the bottom
+          logContainer.scrollTop = logContainer.scrollHeight;
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Log Viewer</h1>
+    <div class="log-container">
+      <div class="log-box error-box" id="error-logs">
+        <h2>Error Logs</h2>
+      </div>
+      <div class="log-box success-box" id="success-logs">
+        <h2>Success Logs</h2>
+      </div>
+    </div>
+  </body>
+</html>
