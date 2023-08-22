@@ -14,7 +14,16 @@
     "pm2",
     "moniter",
     "logs",
-    "node"
+    "node",
+    "watch",
+    "file",
+    "error",
+    "success",
+    "express",
+    "authenticate",
+    "ui",
+    "log ui",
+    "log"
   ],
   "author": "aravindh",
   "license": "ISC",
