@@ -101,20 +101,3 @@ function logMonitor(inputs, authOptions, otherOptions) {
 }
 
 module.exports = logMonitor
-
-const basicInputs = {
-    logFilePath: '/home/sparkout/.pm2/logs/layer-one-x-out-0.log',
-};
-
-const authOptions = {
-    users: { 'admin': '12345' },
-    challenge: true,
-    realm: 'Restricted Area',
-};
-
-const otherOptions = {
-    maxLines: 100,
-    port: 8000,
-};
-
-startLogMonitor(basicInputs, authOptions, otherOptions);
