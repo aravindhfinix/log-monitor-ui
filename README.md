@@ -22,31 +22,35 @@ Follow these steps to incorporate the Log Monitor middleware into your project:
 1. **Import the module:**
 
 ```javascript
-const logMonitor = require('log-monitor-ui');
+const logMonitor = require("log-monitor-ui");
 ```
 
 2. **Set up configuration parameters:**
 
 ```javascript
-const logFilePath = '/path/to/your/log/file.log'; // Path to the main log file
-const errorLogFilePath = '/path/to/your/error/log/file.log'; // Path to the error log file (optional)
+const logFilePath = "/path/to/your/log/file.log"; // Path to the main log file
+const errorLogFilePath = "/path/to/your/error/log/file.log"; // Path to the error log file (optional)
 
 const authOptions = {
-    users: { 'admin': '12345' }, // Users and passwords for basic authentication
-    challenge: true,
-    realm: 'Restricted Area',
+  users: { userName: "password" }, // Users and passwords for basic authentication
+  challenge: true,
+  realm: "Restricted Area",
 };
 
 const otherOptions = {
-    maxLines: 100, // Number of lines to display from the log files
-    port: 8000, // Port on which the server will run
+  maxLines: 100, // Number of lines to display from the log files
+  port: 8000, // Port on which the server will run
 };
 ```
 
 3. **Initialize the log monitor:**
 
 ```javascript
-const logMonitorInstance = logMonitor(logFilePath, errorLogFilePath, authOptions, otherOptions);
+const logMonitorInstance = logMonitor(
+  { logFilePath, errorLogFilePath },
+  authOptions,
+  otherOptions
+);
 ```
 
 4. **Access the log monitor web interface:**
@@ -68,23 +72,27 @@ Open a web browser and navigate to `http://localhost:8000/logs` to view the main
 Here's a basic example of using the Log Monitor package:
 
 ```javascript
-const logMonitor = require('log-monitor');
+const logMonitor = require("log-monitor-ui");
 
-const logFilePath = '/home/sparkout/.pm2/logs/layer-one-x-out-0.log';
-const errorLogFilePath = '/home/sparkout/.pm2/logs/error.log';
+const logFilePath = "/home/aravindh/.pm2/logs/app.log";
+const errorLogFilePath = "/home/aravindh/.pm2/logs/error.log";
 
 const authOptions = {
-    users: { 'admin': '12345' },
-    challenge: true,
-    realm: 'Restricted Area',
+  users: { admin: "12345" },
+  challenge: true,
+  realm: "Restricted Area",
 };
 
 const otherOptions = {
-    maxLines: 100,
-    port: 8000,
+  maxLines: 100,
+  port: 8000,
 };
 
-const logMonitorInstance = logMonitor(logFilePath, errorLogFilePath, authOptions, otherOptions);
+const logMonitorInstance = logMonitor(
+  { logFilePath, errorLogFilePath },
+  authOptions,
+  otherOptions
+);
 ```
 
 ## Routes
@@ -94,7 +102,7 @@ The Log Monitor package provides the following routes to access the web interfac
 1. **Main Log File:**
 
    ```
-   http://localhost:8000/logs
+   http://localhost:8000
    ```
 
 2. **Error Log File:**
@@ -110,7 +118,6 @@ The Log Monitor package provides the following routes to access the web interfac
    ```
 
 Remember that if you've set up basic authentication using the `authOptions`, you will be prompted to enter the specified authentication credentials when accessing these routes.
-
 
 ## Contributing
 

@@ -25,7 +25,7 @@ function logMonitor(inputs, authOptions, otherOptions) {
         app.use(auth);
     }
 
-    app.get('/logs', (req, res) => {
+    app.get('/', (req, res) => {
         res.sendFile(__dirname + '/logs.html');
     });
 
@@ -38,7 +38,7 @@ function logMonitor(inputs, authOptions, otherOptions) {
     });
 
     app.use((req, res, next) => {
-        return res.send('Requested route not found');
+        return res.send('Reached dead end');
     });
 
     function emitLogFileChange(logData, event) {
